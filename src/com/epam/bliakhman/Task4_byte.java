@@ -1,7 +1,7 @@
 package com.epam.bliakhman;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class Task4_byte {
@@ -9,14 +9,15 @@ public class Task4_byte {
 
     public static void main(String[] args) {
 
-            //create HashMap of all characters with power of 2 as value
-            HashMap<Character, Long> alpha = new HashMap<>();
+            //create alphabet array
+        ArrayList<Character> alpha =new ArrayList<Character>(52);
             for (int i = 0; i < 26; i++) {
-                alpha.put(((char) (97 + i)), (long) Math.pow(2, i));
-            }
+                alpha.add((char) (97 + i));
+                }
             for (int i = 0; i < 26; i++) {
-                alpha.put(((char) (65 + i)), (long) Math.pow(2, i + 26));
-            }
+                alpha.add((char) (65 + i));
+                }
+
             //Get user input
             String userinput;
             Scanner reader = new Scanner(System.in);
@@ -48,11 +49,11 @@ public class Task4_byte {
         private String word;
         private Integer lettercount;
 
-        WordLetterCountByte (String word,HashMap<Character,Long> alpha) {
+        WordLetterCountByte (String word,ArrayList alpha) {
             this.word = word;
             long byteor = 0;
             for (Character character : word.toCharArray()) {
-                byteor |= alpha.get(character);
+               byteor |= 1 << alpha.indexOf(character);
             }
             lettercount=Long.bitCount(byteor);
         }
