@@ -4,7 +4,7 @@ public class FirstExample {
 
     public static void main(String[] args) {
 
-        System.out.println("Count: "+args.length);
+        System.out.printf("Count: %d%n", args.length);
 
         float len = 0;
 
@@ -12,7 +12,7 @@ public class FirstExample {
         len+=str.length();
          }
 
-        System.out.println("AVG : "+(float)len/args.length );
+        System.out.printf("AVG : "+(float)len/args.length );
 
 
     }

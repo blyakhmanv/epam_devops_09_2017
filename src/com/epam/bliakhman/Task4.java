@@ -1,6 +1,7 @@
 package com.epam.bliakhman;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Scanner;
 
@@ -22,7 +23,7 @@ public class Task4 {
         //Split string into arry by space
         String[] wordArray = userinput.split("\\s+");
 
-        //Create array of WorkLetterCount objects
+        //Create array of WordLetterCount objects
         WordLetterCount[] wordLetterCountArray = new WordLetterCount[wordArray.length];
         for (int i = 0; i <wordArray.length ; i++) {
             wordLetterCountArray[i] = new WordLetterCount(wordArray[i]);
@@ -40,9 +41,9 @@ public class Task4 {
 
      WordLetterCount (String word) {
          this.word = word;
-         Hashtable<Character,Integer> temphash = new Hashtable<>();
+         HashSet<Character> temphash = new HashSet<>();
          for (Character letter : word.toCharArray() ) {
-            temphash.putIfAbsent(letter,0);
+            temphash.add(letter);
          }
          lettercount=temphash.size();
      }

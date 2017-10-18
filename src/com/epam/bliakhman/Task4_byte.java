@@ -9,7 +9,7 @@ public class Task4_byte {
 
     public static void main(String[] args) {
 
-            //create alphabet array
+        //create alphabet array
         ArrayList<Character> alpha =new ArrayList<Character>(52);
             for (int i = 0; i < 26; i++) {
                 alpha.add((char) (97 + i));
@@ -17,7 +17,7 @@ public class Task4_byte {
             for (int i = 0; i < 26; i++) {
                 alpha.add((char) (65 + i));
                 }
-
+        System.out.println(Arrays.toString(alpha.toArray()));
             //Get user input
             String userinput;
             Scanner reader = new Scanner(System.in);
@@ -52,7 +52,7 @@ public class Task4_byte {
         WordLetterCountByte (String word,ArrayList alpha) {
             this.word = word;
             long byteor = 0;
-            for (Character character : word.toCharArray()) {
+            for (char character : word.toCharArray()) {
                byteor |= 1 << alpha.indexOf(character);
             }
             lettercount=Long.bitCount(byteor);

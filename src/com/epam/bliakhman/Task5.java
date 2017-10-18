@@ -45,7 +45,7 @@ public class Task5 {
 
         //find all Eng words where countVowles = countConsonants
         for (getVowelsConsonantNumbers getVowelsConsonantNumbers : wordExtenededArray) {
-           if (getVowelsConsonantNumbers.isEng & getVowelsConsonantNumbers.consonantCount==getVowelsConsonantNumbers.vowelsCount){
+           if (getVowelsConsonantNumbers.isEng & Objects.equals(getVowelsConsonantNumbers.consonantCount, getVowelsConsonantNumbers.vowelsCount)){
               result++;
            }
         }

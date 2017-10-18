@@ -2,6 +2,8 @@ package com.epam.bliakhman;
 
 import com.sun.org.apache.xpath.internal.SourceTree;
 
+
+
 public class Task1 {
     public static void main(String[] args) {
         if (args.length==0) {
@@ -21,6 +23,7 @@ public class Task1 {
             }
             System.out.println("Min String "+MinStr);
             System.out.println("Max String "+MaxStr);
+
         }
 
     }
