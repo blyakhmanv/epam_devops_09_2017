@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class IntList {
 
     private int[] arr;
-    private int currentlength = 0;
+    private int currentLength;
 
     public IntList(){
         this(16);
@@ -16,24 +16,22 @@ public class IntList {
         arr = new int[size];
     }
 
-    private int[] extendIfNeeded(int[] arr, int currentlength){
-        if (currentlength >= arr.length/2) {
-            arr = Arrays.copyOf(arr,currentlength*3);
+    private void extendIfNeeded(){
+        if (currentLength >= arr.length/2) {
+            arr = Arrays.copyOf(arr,currentLength*3);
         }
-        return arr;
     }
 
-
     public void add(int value) {
-       this.add(value,currentlength);
+       this.add(value, currentLength);
        //TODO add element into the list as the last item -DONE!
     }
 
     public void add(int value, int index) {
-        arr = extendIfNeeded(arr,currentlength);
-        System.arraycopy(arr, index, arr, index+1, currentlength-index );
+        extendIfNeeded();
+        System.arraycopy(arr, index, arr, index+1, currentLength-index );
         arr[index] = value;
-        currentlength++;
+        currentLength++;
         //TODO add element into the index position - DONE!
     }
 
@@ -52,30 +50,28 @@ public class IntList {
         //TODO find and delete first occurence of item value if exists and return true otherwise  return false - DONE!
     }
 
-    public boolean removeall(int value) {
+    public boolean removeAll(int value) {
         if (this.indexOf(value) < 0 ){
             return false;
         }
-        int[] temparr = new int[arr.length];
         int counter = 0;
-        for (int i = 0; i <currentlength ; i++) {
+        for (int i = 0; i < currentLength; i++) {
           if(arr[i] != value) {
-              temparr[i-counter] = arr[i];
+              arr[i-counter] = arr[i];
           }
           else {
               counter++;
           }
         }
-        arr=temparr;
-        currentlength-=counter;
+        currentLength -=counter;
         return true;
         //TODO find and delete all occurences of item value if exists and return true otherwise  return false -DONE!
     }
+
     public int removeFrom(int index) {
         int item = arr[index];
-        System.arraycopy(arr, 0, arr, 0, index);
-        System.arraycopy(arr, index+1, arr, index, currentlength-index-1);
-        currentlength--;
+        System.arraycopy(arr, index+1, arr, index, currentLength-index-1);
+        currentLength--;
         return item;
         //TODO remove element at position and return the value -DONE!
     }
@@ -86,17 +82,17 @@ public class IntList {
     }
 
     public int[] toArrary() {
-       return Arrays.copyOf(arr, currentlength);
+       return Arrays.copyOf(arr, currentLength);
         //TODO return copy of arraylist - DONE!
     }
 
     public int size() {
-        return currentlength;
+        return currentLength;
         //TODO get realsize of arraylist - DONE!
     }
 
     public int indexOf(int value) {
-        for (int i = 0; i < currentlength ; i++) {
+        for (int i = 0; i < currentLength; i++) {
             if (arr[i]==value){
                 return i;
             }
@@ -106,7 +102,7 @@ public class IntList {
     }
 
     public int lastIndexOf(int value) {
-        for (int i = currentlength; i >0 ; i--) {
+        for (int i = currentLength; i >0 ; i--) {
             if (arr[i]==value){
                 return i;
             }
@@ -115,8 +111,8 @@ public class IntList {
         //TODO find index of element from the end - DONE!
     }
 
-    public void trimToSIze() {
-        arr = Arrays.copyOf(arr,currentlength);
+    public void trimToSize() {
+        arr = Arrays.copyOf(arr, currentLength);
        //TODO decrease array size to the currentlengths - DONE!
     }
 
@@ -126,11 +122,9 @@ public class IntList {
 
     @Override
     public String toString(){
-        int[] temparr = new int[currentlength];
-        System.arraycopy(arr, 0, temparr,0, currentlength);
-        return Arrays.toString(temparr);
-
-
+        int[] tempArr = new int[currentLength];
+        System.arraycopy(arr, 0, tempArr,0, currentLength);
+        return Arrays.toString(tempArr);
     }
 
     //Test
@@ -153,7 +147,7 @@ public class IntList {
         System.out.println(intList.indexOf(35));
         System.out.println(intList.lastIndexOf(30));
         System.out.println(intList.getInternalSize());
-        intList.trimToSIze();
+        intList.trimToSize();
         System.out.println(intList.getInternalSize());
         System.out.println(intList);
         System.out.println(intList.removeFrom(34));
@@ -166,8 +160,8 @@ public class IntList {
             intList.set(55,i);
         }
         System.out.println(intList);
-        System.out.println(intList.removeall(66));
-        System.out.println(intList.removeall(55));
+        System.out.println(intList.removeAll(66));
+        System.out.println(intList.removeAll(55));
         System.out.println(intList);
         System.out.println(intList.getInternalSize());
         System.out.println(intList.size());
