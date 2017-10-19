@@ -102,7 +102,7 @@ public class IntList {
     }
 
     public int lastIndexOf(int value) {
-        for (int i = currentLength; i >0 ; i--) {
+        for (int i = currentLength-1; i >= 0 ; i--) {
             if (arr[i]==value){
                 return i;
             }
@@ -137,6 +137,7 @@ public class IntList {
         }
         //test all methods
         System.out.println(intList);
+        System.out.println(intList.lastIndexOf(0));
         intList.add(35,33);
         intList.add(35, 10);
         intList.set(35,11);
@@ -165,6 +166,7 @@ public class IntList {
         System.out.println(intList);
         System.out.println(intList.getInternalSize());
         System.out.println(intList.size());
+
     }
 
 }
