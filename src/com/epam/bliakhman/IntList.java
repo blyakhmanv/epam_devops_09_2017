@@ -2,6 +2,7 @@ package com.epam.bliakhman;
 
 
 import java.util.Arrays;
+import java.util.StringJoiner;
 
 public class IntList {
 
@@ -17,8 +18,8 @@ public class IntList {
     }
 
     private void extendIfNeeded(){
-        if (currentLength >= arr.length/2) {
-            arr = Arrays.copyOf(arr,currentLength*3);
+        if (currentLength == arr.length) {
+            arr = Arrays.copyOf(arr, (int)(currentLength*1.5));
         }
     }
 
@@ -122,9 +123,14 @@ public class IntList {
 
     @Override
     public String toString(){
-        int[] tempArr = new int[currentLength];
-        System.arraycopy(arr, 0, tempArr,0, currentLength);
-        return Arrays.toString(tempArr);
+        if (currentLength == 0)
+            return "[]";
+        StringBuilder b = new StringBuilder();
+        b.append("[");
+        for (int i = 0; i < currentLength-1 ; i++) {
+            b.append(arr[i]+", ");
+            }
+        return b.append(arr[currentLength-1]+"]").toString();
     }
 
     //Test
@@ -132,6 +138,7 @@ public class IntList {
     public static void main(String[] args) {
         //initiate array
         IntList intList = new IntList();
+        System.out.println(intList);
         for (int i = 0; i < 33 ; i++) {
             intList.add(i);
         }
@@ -140,7 +147,7 @@ public class IntList {
         System.out.println(intList.lastIndexOf(0));
         intList.add(35,33);
         intList.add(35, 10);
-        intList.set(35,11);
+        intList.set(35,12);
         System.out.println(intList);
         System.out.println(intList.get(10));
         System.out.println(Arrays.toString(intList.toArrary()));
