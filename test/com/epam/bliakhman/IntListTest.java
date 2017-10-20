@@ -54,6 +54,7 @@ class IntListTest {
         assertEquals(5,list.get(1));
         assertEquals(1,list.indexOf(5));
         assertEquals(3,list.lastIndexOf(5));
+        assertEquals(-1,list.lastIndexOf(10));
     }
 
     @Test
@@ -110,6 +111,7 @@ class IntListTest {
     @Test
     void testToString() {
         IntList list = new IntList();
+        assertEquals("[]",list.toString());
         for (int i = 0; i < 3; i++) {
             list.add(i);
         }
