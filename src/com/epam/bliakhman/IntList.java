@@ -2,15 +2,16 @@ package com.epam.bliakhman;
 
 
 import java.util.Arrays;
-import java.util.StringJoiner;
+
 
 public class IntList {
 
+    public static final int DEFAULTSIZE = 16;
     private int[] arr;
     private int currentLength;
 
     public IntList(){
-        this(16);
+        this(DEFAULTSIZE);
     }
 
     public IntList (int size) {
@@ -131,49 +132,6 @@ public class IntList {
             b.append(arr[i]+", ");
             }
         return b.append(arr[currentLength-1]+"]").toString();
-    }
-
-    //Test
-
-    public static void main(String[] args) {
-        //initiate array
-        IntList intList = new IntList();
-        System.out.println(intList);
-        for (int i = 0; i < 33 ; i++) {
-            intList.add(i);
-        }
-        //test all methods
-        System.out.println(intList);
-        System.out.println(intList.lastIndexOf(0));
-        intList.add(35,33);
-        intList.add(35, 10);
-        intList.set(35,12);
-        System.out.println(intList);
-        System.out.println(intList.get(10));
-        System.out.println(Arrays.toString(intList.toArrary()));
-        System.out.println(intList.size());
-        System.out.println(intList.indexOf(35));
-        System.out.println(intList.lastIndexOf(30));
-        System.out.println(intList.getInternalSize());
-        intList.trimToSize();
-        System.out.println(intList.getInternalSize());
-        System.out.println(intList);
-        System.out.println(intList.removeFrom(34));
-        System.out.println(intList.removeFrom(0));
-        System.out.println(intList.removeFrom(10));
-        System.out.println(intList.remove(66));
-        System.out.println(intList.remove(22));
-        System.out.println(intList);
-        for (int i = 0; i < 24 ; i+=2) {
-            intList.set(55,i);
-        }
-        System.out.println(intList);
-        System.out.println(intList.removeAll(66));
-        System.out.println(intList.removeAll(55));
-        System.out.println(intList);
-        System.out.println(intList.getInternalSize());
-        System.out.println(intList.size());
-
     }
 
 }
