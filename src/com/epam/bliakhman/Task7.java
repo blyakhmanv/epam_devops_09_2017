@@ -1,29 +1,26 @@
 package com.epam.bliakhman;
 
-
 import java.util.Arrays;
 
 public class Task7 {
-    public static String main (String[] args) {
+  public static String main(String[] args) {
 
-     NewOrderedString[] strings = new NewOrderedString[args.length];
-        for ( int i = 0 ; i <args.length  ; i++ ) {
-            strings[i] = new NewOrderedString ( args[i] );
-        }
-
-        Arrays.sort ( strings );
-        return Arrays.toString ( strings);
-
+    NewOrderedString[] strings = new NewOrderedString[args.length];
+    for ( int i = 0 ; i <args.length  ; i++ ) {
+      strings[i] = new NewOrderedString ( args[i] );
     }
+    Arrays.sort ( strings );
+    return Arrays.toString ( strings);
+
+  }
 }
 
 class NewOrderedString implements Comparable<NewOrderedString> {
 
-    String str = "";
+    String str ;
 
     public NewOrderedString (String str) {
         this.str = str;
-        
     }
 
     @Override
