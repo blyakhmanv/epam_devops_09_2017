@@ -63,8 +63,8 @@ class IntListTest {
         for (int i = 0; i <5 ; i++) {
             list.add(i);
         }
-       assertEquals(false,list.remove(5));
-       assertEquals(true,list.remove(3));
+       assertFalse(list.remove(5));
+       assertTrue(list.remove(3));
     }
 
     @Test
