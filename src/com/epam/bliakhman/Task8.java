@@ -1,7 +1,5 @@
 package com.epam.bliakhman;
 
-import com.sun.xml.internal.fastinfoset.util.CharArray;
-
 public class Task8 {
 
     public static void main (String[] args) {
