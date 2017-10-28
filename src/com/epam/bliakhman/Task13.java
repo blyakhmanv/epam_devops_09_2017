@@ -21,7 +21,7 @@ public class Task13 {
             case 10: return "October";
             case 11: return "November";
             case 12: return "December";
-            default: return "Not a month number";
+            default: return "";
 
         }
     }

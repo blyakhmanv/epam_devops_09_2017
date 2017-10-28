@@ -10,7 +10,7 @@ class Task13Test {
     void getMonthByNumberTest () {
         assertEquals ( "March", getMonthByNumber ( 3 ) );
         assertNotEquals ( "June", getMonthByNumber ( 5 ) );
-        assertEquals ( "Not a month number", getMonthByNumber ( -1 ) );
+        assertEquals ( "", getMonthByNumber ( -1 ) );
     }
 
 }
