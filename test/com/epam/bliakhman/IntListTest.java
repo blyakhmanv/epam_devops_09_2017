@@ -11,7 +11,7 @@ class IntListTest {
         IntList list = new IntList();
         assertEquals(0, list.size());
         assertEquals(-1,list.indexOf(5));
-        assertArrayEquals(new int[0],list.toArrary());
+        assertArrayEquals(new int[0],list.toArray ());
 
     }
     @Test
@@ -19,7 +19,7 @@ class IntListTest {
         IntList list = new IntList(100);
         assertEquals(0, list.size());
         assertEquals(-1,list.indexOf(5));
-        assertArrayEquals(new int[0],list.toArrary());
+        assertArrayEquals(new int[0],list.toArray ());
 
     }
     @Test
@@ -40,7 +40,7 @@ class IntListTest {
         list.add(3,0);
         list.add(2,1);
         list.add(1,2);
-        assertArrayEquals(new int[]{3,2,1,0,1,2},list.toArrary());
+        assertArrayEquals(new int[]{3,2,1,0,1,2},list.toArray ());
     }
 
     @Test
@@ -74,7 +74,7 @@ class IntListTest {
             list.add(5);
         }
         list.removeAll(5);
-        assertArrayEquals(new int[0],list.toArrary());
+        assertArrayEquals(new int[0],list.toArray ());
     }
 
     @Test
@@ -84,7 +84,7 @@ class IntListTest {
             list.add(i);
         }
         list.removeAll(6);
-        assertArrayEquals(new int[]{0,1,2},list.toArrary());
+        assertArrayEquals(new int[]{0,1,2},list.toArray ());
     }
 
     @Test
@@ -94,7 +94,7 @@ class IntListTest {
             list.add(i);
         }
         list.removeAll(1);
-        assertArrayEquals(new int[]{0,2},list.toArrary());
+        assertArrayEquals(new int[]{0,2},list.toArray ());
     }
 
     @Test

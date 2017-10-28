@@ -4,7 +4,7 @@ package com.epam.bliakhman;
 import java.util.Arrays;
 
 
-public class IntList {
+public class IntList implements List{
 
     public static final int DEFAULTSIZE = 16;
     private int[] arr;
@@ -83,7 +83,7 @@ public class IntList {
         //TODO return value of item at index - DONE!
     }
 
-    public int[] toArrary() {
+    public int[] toArray () {
        return Arrays.copyOf(arr, currentLength);
         //TODO return copy of arraylist - DONE!
     }
