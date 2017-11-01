@@ -1,24 +1,26 @@
 package com.epam.bliakhman;
 
-public interface List {
+public interface List <T> {
 
-    void add (int value);
+    void add (T value);
 
-    void set(int value, int index);
+    void add(T value, int index);
 
-    boolean remove(int value);
+    void set(T value, int index);
 
-    boolean removeAll(int value);
+    boolean remove(T value);
 
-    int removeFrom(int index);
+    boolean removeAll (T value);
 
-    int get(int index);
+    T removeFrom(int index);
 
-    int[] toArray ();
+    T get(int index);
+
+    Object[] toArray ();
 
     int size();
 
-    int indexOf(int value);
+    int indexOf(T value);
 
-    int lastIndexOf(int value);
+    int lastIndexOf(T value);
 }
