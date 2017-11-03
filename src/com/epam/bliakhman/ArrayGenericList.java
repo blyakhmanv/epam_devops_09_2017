@@ -4,17 +4,17 @@ package com.epam.bliakhman;
 import java.util.Arrays;
 
 
-public class ArrayList<T> implements List<T>{
+public class ArrayGenericList<T> implements GenericList<T> {
 
     public static final int DEFAULTSIZE = 16;
     private Object[] arr;
     private int currentLength;
 
-    public ArrayList (){
+    public ArrayGenericList (){
         this(DEFAULTSIZE);
     }
 
-    public ArrayList (int size) {
+    public ArrayGenericList (int size) {
         arr = new Object[size];
     }
 

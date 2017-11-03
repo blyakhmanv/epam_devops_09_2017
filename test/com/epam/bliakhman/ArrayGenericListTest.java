@@ -4,11 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ArrayListTest {
+class ArrayGenericListTest {
 
     @Test
     void defaultConstructorTest() {
-        ArrayList<Integer> list = new ArrayList <> ();
+        ArrayGenericList<Integer> list = new ArrayGenericList<> ();
         assertEquals(0, list.size());
         assertEquals(-1,list.indexOf(5));
         assertArrayEquals(new Integer[0],list.toArray ());
@@ -16,7 +16,7 @@ class ArrayListTest {
     }
     @Test
     void nonDefaultConstructorTest() {
-        ArrayList<Integer>  list = new ArrayList<> (100);
+        ArrayGenericList<Integer> list = new ArrayGenericList <> (100);
         assertEquals(0, list.size());
         assertEquals(-1,list.indexOf(5));
         assertArrayEquals(new Integer[0],list.toArray ());
@@ -24,7 +24,7 @@ class ArrayListTest {
     }
     @Test
     void add() {
-        ArrayList<Integer> list = new ArrayList<> ()  ;
+        ArrayGenericList<Integer> list = new ArrayGenericList <> ()  ;
         for (int i = 0; i <50 ; i++) {
             list.add(i);
         }
@@ -33,7 +33,7 @@ class ArrayListTest {
 
     @Test
     void addToIndex() {
-        ArrayList<Integer> list = new ArrayList<> ()  ;
+        ArrayGenericList<Integer> list = new ArrayGenericList <> ()  ;
         for (int i = 0; i <3 ; i++) {
             list.add(i);
         }
@@ -45,7 +45,7 @@ class ArrayListTest {
 
     @Test
     void set() {
-        ArrayList<Integer> list = new ArrayList<> ()  ;
+        ArrayGenericList<Integer> list = new ArrayGenericList <> ()  ;
         for (int i = 0; i <5 ; i++) {
             list.add(i);
         }
@@ -59,7 +59,7 @@ class ArrayListTest {
 
     @Test
     void remove(){
-        ArrayList<Integer> list = new ArrayList<> ()  ;
+        ArrayGenericList<Integer> list = new ArrayGenericList <> ()  ;
         for (int i = 0; i <5 ; i++) {
             list.add(i);
         }
@@ -69,7 +69,7 @@ class ArrayListTest {
 
     @Test
     void removeAllAll() {
-        ArrayList<Integer> list = new ArrayList<> ()  ;
+        ArrayGenericList<Integer> list = new ArrayGenericList <> ()  ;
         for (int i = 0; i <5 ; i++) {
             list.add(5);
         }
@@ -79,7 +79,7 @@ class ArrayListTest {
 
     @Test
     void removeAllNothing() {
-        ArrayList<Integer> list = new ArrayList<> ()  ;
+        ArrayGenericList<Integer> list = new ArrayGenericList <> ()  ;
         for (int i = 0; i <3 ; i++) {
             list.add(i);
         }
@@ -89,7 +89,7 @@ class ArrayListTest {
 
     @Test
     void removePart() {
-        ArrayList<Integer> list = new ArrayList<> ()  ;
+        ArrayGenericList<Integer> list = new ArrayGenericList <> ()  ;
         for (int i = 0; i <3 ; i++) {
             list.add(i);
         }
@@ -99,7 +99,7 @@ class ArrayListTest {
 
     @Test
     void trimToSize() {
-        ArrayList<Integer> list = new ArrayList<> ()  ;
+        ArrayGenericList<Integer> list = new ArrayGenericList <> ()  ;
         for (int i = 0; i <3 ; i++) {
             list.add(i);
         }
@@ -110,7 +110,7 @@ class ArrayListTest {
 
     @Test
     void testToString() {
-        ArrayList<Integer> list = new ArrayList<> ()  ;
+        ArrayGenericList<Integer> list = new ArrayGenericList <> ()  ;
         assertEquals("[]",list.toString());
         for (int i = 0; i < 3; i++) {
             list.add(i);

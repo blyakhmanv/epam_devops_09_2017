@@ -1,6 +1,6 @@
 package com.epam.bliakhman;
 
-public interface List <T> {
+public interface GenericList<T> {
 
     void add (T value);
 
