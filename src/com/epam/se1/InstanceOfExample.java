@@ -12,7 +12,7 @@ public class InstanceOfExample {
     public void method() {
 //        value = 20;
 //        list = null;
-//        list = new ArrayList<>();
+//        list = new ArrayGenericList<>();
 //        list.add("123");
         nativeMethod();
         System.out.println("123");

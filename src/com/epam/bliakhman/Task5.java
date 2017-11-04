@@ -11,7 +11,7 @@ public class Task5 {
         int result =0;
 
         //create alphabet arrayList
-        ArrayList<Character> alpha =new ArrayList<Character>(52);
+        ArrayList<Character> alpha =new ArrayList <Character> (52);
         for (int i = 0; i < 26; i++) {
             alpha.add((char) (97 + i));
         }
@@ -19,8 +19,8 @@ public class Task5 {
             alpha.add((char) (65 + i));
         }
 
-        //create ArrayList of vowels
-        ArrayList<Character> vowels =new ArrayList<Character>(Arrays.asList('a','A','e','E','i','I','o','O','u','U','y','Y'));
+        //create ArrayGenericList of vowels
+        ArrayList<Character> vowels =new ArrayList <Character> (Arrays.asList('a','A','e','E','i','I','o','O','u','U','y','Y'));
 
         //Get user input
         String userinput;
