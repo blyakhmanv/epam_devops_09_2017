@@ -29,10 +29,27 @@ public class Task18 {
                 new Employee(85, "Семен", "Мельников", 65000)
         );
 
-        sortByWeight( Employee.comparatorByWeight, employees);
+        Comparator<PhysicalObject> comparatorByWeight = new Comparator <PhysicalObject> ( ) {
+            @Override
+            public int compare(PhysicalObject o1, PhysicalObject o2) {
+                return Double.compare ( o1.getWeight (), o2.getWeight () );
+            }
+        };
+        sortByWeight( comparatorByWeight, employees);
         System.out.println(employees);
 
-        sortByName( Employee.comparatorByName, employees);
+        Comparator<Person> comparatorByName = new Comparator<Person>(){
+        @Override
+        public int compare(Person o1, Person o2) {
+            if (o1.getLastName ().equals ( o2.getLastName () )) {
+                return o1.getFirstName ().compareTo ( o2.getFirstName () );
+            }
+            else {
+                return(o1.getLastName ().compareTo ( o2.getLastName () ));
+            }
+        }
+    };
+        sortByName( comparatorByName, employees);
         System.out.println(employees);
 
         List<Object> richGuys = new ArrayList<>();
@@ -63,12 +80,15 @@ public class Task18 {
     }
 
     private static void sortByWeight(Comparator<? super PhysicalObject> comparator, List<? extends PhysicalObject> list) {
-       Collections.sort(list, comparator);
+
+        Collections.sort(list, comparator);
    }
 
     private static void sortByName(Comparator<? super Person> comparator, List<? extends Person> list) {
        Collections.sort(list, comparator);
     }
+
+
 
 }
 
@@ -77,7 +97,7 @@ public class Task18 {
 
 
 
-abstract class PhysicalObject implements  Comparable{
+abstract class PhysicalObject {
 
     private final double weight;
 
@@ -94,19 +114,9 @@ abstract class PhysicalObject implements  Comparable{
     public String toString() {
         return String.valueOf(weight);
     }
-
-    public static final Comparator<PhysicalObject> comparatorByWeight = new Comparator<PhysicalObject>(){
-
-        @Override
-        public int compare(PhysicalObject o1, PhysicalObject o2) {
-            return Double.compare ( o1.weight, o2.weight );
-        }
-
-    };
-
 }
 
-abstract class Person extends PhysicalObject {
+class Person extends PhysicalObject {
 
     private final String firstName;
     private final String lastName;
@@ -131,21 +141,6 @@ abstract class Person extends PhysicalObject {
     public String toString() {
         return super.toString() + " " + firstName + " " + lastName;
     }
-
-    public static final Comparator<Person> comparatorByName = new Comparator<Person>(){
-
-        @Override
-        public int compare(Person o1, Person o2) {
-            if (o1.lastName.equals ( o2.lastName )) {
-                return o1.firstName.compareTo ( o2.firstName );
-            }
-            else {
-                return(o1.lastName.compareTo ( o2.lastName ));
-            }
-        }
-
-    };
-
 }
 
 class Employee extends Person {
@@ -166,10 +161,5 @@ class Employee extends Person {
     public String toString() {
         return super.toString() + " " + salary;
     }
-
-    @Override
-    public int compareTo (Object o) {
-        return 0;
-    }
-}
+ }
 
