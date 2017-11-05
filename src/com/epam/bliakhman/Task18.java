@@ -41,12 +41,8 @@ public class Task18 {
         Comparator<Person> comparatorByName = new Comparator<Person>(){
         @Override
         public int compare(Person o1, Person o2) {
-            if (o1.getLastName ().equals ( o2.getLastName () )) {
-                return o1.getFirstName ().compareTo ( o2.getFirstName () );
-            }
-            else {
-                return(o1.getLastName ().compareTo ( o2.getLastName () ));
-            }
+            int lastNameCompare = o1.getLastName ().compareTo ( o2.getLastName () );
+            return lastNameCompare == 0 ? o1.getFirstName ().compareTo ( o2.getFirstName () ) : lastNameCompare;
         }
     };
         sortByName( comparatorByName, employees);
@@ -61,7 +57,7 @@ public class Task18 {
         System.out.println(lightObjects);
     }
 
-    private static void selectObjectsWithWeightLessThen65 (List<? extends PhysicalObject> src, List<PhysicalObject> dst){
+    private static void selectObjectsWithWeightLessThen65 (List<? extends PhysicalObject> src, List<? super PhysicalObject> dst){
         for ( PhysicalObject physicalObject : src ) {
             if ( physicalObject.getWeight () < 65){
                 dst.add ( physicalObject );
@@ -70,7 +66,7 @@ public class Task18 {
 
     }
 
-    private static void selectEmployeesWithSalaryGreaterThen65000 (List<? extends Employee> src, List<Object> dst) {
+    private static void selectEmployeesWithSalaryGreaterThen65000 (List<? extends Employee> src, List<? super Employee> dst) {
         for ( Employee employee : src ) {
             if (employee.getSalary () > 65000) {
                 dst.add ( employee );
