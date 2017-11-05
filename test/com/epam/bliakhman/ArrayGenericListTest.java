@@ -117,4 +117,20 @@ class ArrayGenericListTest {
         }
         assertEquals("[0, 1, 2]",list.toString());
     }
+
+    @Test
+    void testIterator() {
+        int counter = 0;
+        ArrayGenericList<Integer> list = new ArrayGenericList <> ()  ;
+        assertEquals("[]",list.toString());
+        for (int i = 0; i < 3; i++) {
+            list.add(i);
+        }
+        Iterator<Integer> iterator = list.getIterator ();
+            while (iterator.hasNext()) {
+                iterator.next ();
+                counter++;
+        }
+        assertEquals ( 3, counter );
+    }
 }

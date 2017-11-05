@@ -133,4 +133,24 @@ public class ArrayGenericList<T> implements GenericList<T> {
         return b.append(arr[currentLength-1]).append ("]").toString();
     }
 
+    @Override
+    public Iterator <T> getIterator () {
+        return new InnerIterator ();
+    }
+
+    private class InnerIterator implements  Iterator<T>{
+
+        private int currentIndex;
+
+        @Override
+        public boolean hasNext() {
+            return currentIndex < size();
+        }
+
+        @Override
+        public T next() {
+            return (T) arr[currentIndex++];
+        }
+    }
+
 }

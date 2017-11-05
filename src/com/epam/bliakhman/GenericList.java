@@ -23,4 +23,7 @@ public interface GenericList<T> {
     int indexOf(T value);
 
     int lastIndexOf(T value);
+
+    Iterator<T> getIterator();
+
 }
