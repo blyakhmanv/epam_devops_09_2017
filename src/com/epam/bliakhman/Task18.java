@@ -84,8 +84,6 @@ public class Task18 {
        Collections.sort(list, comparator);
     }
 
-
-
 }
 
 
