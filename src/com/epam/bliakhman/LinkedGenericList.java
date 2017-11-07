@@ -1,5 +1,11 @@
 package com.epam.bliakhman;
 
+import com.epam.se2.lesson14.List;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.StringJoiner;
+
 public class LinkedGenericList<T> implements GenericList<T>{
     Node<T> firstNode;
     Node<T> lastNode;
@@ -45,12 +51,24 @@ public class LinkedGenericList<T> implements GenericList<T>{
 
     @Override
     public boolean remove (T value) {
+        int index = this.indexOf ( value );
+        if ( index > -1 ){
+            this.removeFrom ( index );
+            return true;
+        }
         return false;
     }
 
     @Override
     public boolean removeAll (T value) {
-        return false;
+        boolean isFound ;
+        int index = this.indexOf ( value );
+        isFound = (index > -1)? true : false;
+        while (index > -1) {
+           this.removeFrom ( index );
+           index = this.indexOf ( value );
+        }
+        return isFound;
     }
 
     @Override
@@ -58,6 +76,7 @@ public class LinkedGenericList<T> implements GenericList<T>{
         Node<T> removeNode = getNode ( index );
         removeNode.getPrevious ().setNext ( removeNode.getNext () );
         removeNode.getNext ().setPrevious ( removeNode.getPrevious () );
+        currentLength--;
         return  removeNode.getValue ();
     }
 
@@ -69,8 +88,18 @@ public class LinkedGenericList<T> implements GenericList<T>{
 
 
     @Override
-    public Object[] toArray () {
-        return new Object[ 0 ];
+    public T[] toArray () {
+        T[] arr = (T[])new Object[currentLength];
+        if (currentLength == 0) {
+            return arr;
+        }
+        int index = 0 ;
+        Iterator<T> iter = this.getIterator ();
+        while (iter.hasNext ()) {
+            arr[index]=iter.next ();
+            index++;
+        }
+        return  arr;
     }
 
     @Override
@@ -80,23 +109,70 @@ public class LinkedGenericList<T> implements GenericList<T>{
 
     @Override
     public int indexOf (T value) {
-        return 0;
+        if (currentLength == 0) {
+            return -1;
+        }
+        Iterator<T> iter = this.getIterator ();
+        int index=0;
+        while (iter.hasNext ()) {
+            if ( iter.next() == value) {
+                return index;
+            }
+            index++;
+        }
+        return -1;
     }
 
     @Override
     public int lastIndexOf (T value) {
-        return 0;
+        Iterator<T> iter = this.getIterator ();
+        int index = 0;
+        int lastIndex = -1;
+        while (iter.hasNext ()) {
+            if ( iter.next() == value) {
+                lastIndex = index;
+            }
+            index++;
+        }
+        return lastIndex;
     }
 
 
     @Override
     public String toString() {
-        return null;
+        if (currentLength == 0) return "[]";
+        StringBuilder sb = new StringBuilder ("[");
+        String prefix = "";
+        Iterator<T> iter = this.getIterator ();
+        while (iter.hasNext ()) {
+            sb.append(prefix);
+            prefix = ", ";
+            sb.append(iter.next ());
+        }
+      return sb.append("]").toString ();
     }
 
     @Override
     public Iterator <T> getIterator () {
-        return null;
+        return new ListIterator ();
+    }
+
+
+    private class ListIterator implements  Iterator<T>{
+
+        private Node<T> currentNode;
+
+        @Override
+        public boolean hasNext() {
+            return currentNode != lastNode.getPrevious ();
+        }
+
+        @Override
+        public T next() {
+            if (currentNode == null) {currentNode = firstNode;}
+            currentNode = currentNode.getNext ();
+            return currentNode.getValue ();
+        }
     }
 
     private class Node<T> {
@@ -134,30 +210,5 @@ public class LinkedGenericList<T> implements GenericList<T>{
         public void setValue (T value) {
             this.value = value;
         }
-    }
-
-    public static void main (String[] args) {
-        LinkedGenericList<String> llist = new LinkedGenericList <> ();
-        llist.add ( "1" );
-        llist.add ( "2" );
-        llist.add ( "3" );
-        llist.add("5",3);
-        llist.add ( "4",2 );
-        llist.set ( "6",1 );
-        System.out.println (llist.get ( 0 ) );
-        System.out.println (llist.get (1 ) );
-        System.out.println (llist.get ( 2 ) );
-        System.out.println (llist.get ( 3 ) );
-        System.out.println (llist.get ( 4 ) );
-
-        System.out.println ( "Removed " +llist.removeFrom (3 ) );
-
-        System.out.println (llist.get ( 0 ) );
-        System.out.println (llist.get (1 ) );
-        System.out.println (llist.get ( 2 ) );
-        System.out.println (llist.get ( 3 ) );
-        System.out.println (llist.get ( 4 ) );
-
-
     }
 }
