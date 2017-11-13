@@ -148,8 +148,18 @@ public class ArrayGenericList<T> implements GenericList<T> {
         }
 
         @Override
+        public boolean hasPrevious () {
+            return 0 < currentIndex;
+        }
+
+        @Override
         public T next() {
             return (T) arr[currentIndex++];
+        }
+
+        @Override
+        public T previous ()  {
+            return (T) arr[currentIndex--];
         }
     }
 

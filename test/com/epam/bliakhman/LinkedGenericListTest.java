@@ -2,6 +2,7 @@ package com.epam.bliakhman;
 
 import org.junit.jupiter.api.Test;
 
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LinkedGenericListTest {
@@ -87,7 +88,8 @@ class LinkedGenericListTest {
             list.add(i);
         }
         list.removeAll(1);
-        assertArrayEquals(new Integer[]{0,2},list.toArray ());
+        list.removeAll(2);
+        assertArrayEquals(new Integer[]{0},list.toArray ());
     }
 
     @Test

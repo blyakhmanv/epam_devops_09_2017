@@ -1,6 +1,9 @@
 package com.epam.bliakhman;
 
 import com.epam.se2.lesson14.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -12,8 +15,10 @@ public class LinkedGenericList<T> implements GenericList<T>{
     int currentLength;
 
     LinkedGenericList(){
-        lastNode = new Node<>(firstNode, null, null);
+        lastNode = new Node<>(null, null, null);
         firstNode = new Node<>(null,null,lastNode);
+        lastNode.previous=firstNode;
+
 
     }
 
@@ -67,6 +72,7 @@ public class LinkedGenericList<T> implements GenericList<T>{
         while (index > -1) {
            this.removeFrom ( index );
            index = this.indexOf ( value );
+
         }
         return isFound;
     }
@@ -126,13 +132,13 @@ public class LinkedGenericList<T> implements GenericList<T>{
     @Override
     public int lastIndexOf (T value) {
         Iterator<T> iter = this.getIterator ();
-        int index = 0;
+        int index = this.size () + 1;
         int lastIndex = -1;
-        while (iter.hasNext ()) {
-            if ( iter.next() == value) {
+        while (iter.hasPrevious ()) {
+            if ( iter.previous () == value) {
                 lastIndex = index;
             }
-            index++;
+            index--;
         }
         return lastIndex;
     }
@@ -168,13 +174,27 @@ public class LinkedGenericList<T> implements GenericList<T>{
         }
 
         @Override
+        public boolean hasPrevious () {
+            return currentNode != firstNode.getNext ();
+        }
+
+        @Override
         public T next() {
             if (currentNode == null) {currentNode = firstNode;}
             currentNode = currentNode.getNext ();
             return currentNode.getValue ();
         }
+
+        @Override
+        public T previous () {
+            if (currentNode == null) {currentNode = lastNode;}
+            currentNode = currentNode.getPrevious ();
+            return currentNode.getValue ();
+        }
     }
 
+    @Setter
+    @Getter
     private class Node<T> {
         Node<T> previous;
         Node<T> next;
@@ -185,30 +205,6 @@ public class LinkedGenericList<T> implements GenericList<T>{
             this.value = value;
             this.next = next;
 
-        }
-
-        public Node <T> getPrevious () {
-            return previous;
-        }
-
-        public void setPrevious (Node <T> previous) {
-            this.previous = previous;
-        }
-
-        public void setNext (Node <T> next) {
-            this.next = next;
-        }
-
-        public Node <T> getNext () {
-            return next;
-        }
-
-        public T getValue () {
-            return value;
-        }
-
-        public void setValue (T value) {
-            this.value = value;
         }
     }
 }
