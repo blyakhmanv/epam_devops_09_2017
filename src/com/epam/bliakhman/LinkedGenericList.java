@@ -1,7 +1,7 @@
 package com.epam.bliakhman;
 
-import com.epam.se2.lesson14.List;
-import lombok.AllArgsConstructor;
+//import com.epam.se2.lesson14.List;
+//import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 

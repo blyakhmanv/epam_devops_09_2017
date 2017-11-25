@@ -1,6 +1,6 @@
-package com.epam.practice;
+package test.java.com.epam.practice;
 
-import com.epam.practice.Example10;
+import main.java.com.epam.practice.Example10;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
