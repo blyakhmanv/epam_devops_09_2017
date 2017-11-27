@@ -20,14 +20,16 @@ public class WebClient {
 
         try (Socket socket = new Socket ( "localhost", 10_000 ) ;
              BufferedWriter out = new BufferedWriter ( new OutputStreamWriter ( socket.getOutputStream ( ) ) ) ;
+
              BufferedReader in = new BufferedReader ( new InputStreamReader ( socket.getInputStream ( ) ) )) {
             out.write (userinput+"\n" );
             out.flush ( );
             //System.out.println ( "From server: " + in.readLine ( ) );
-            int b = in.read();
-            while (b> 0) {
-                System.out.print ((char)b );
-                b = in.read();
+            char[] b = new char[1024];
+            while (in.read(b) != -1) {
+                System.out.print (b );
+                in.read(b);
+
             }
         }
 
