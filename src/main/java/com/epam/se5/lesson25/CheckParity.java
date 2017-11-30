@@ -1,4 +1,4 @@
-package com.epam.se5.lesson25;
+package main.java.com.epam.se5.lesson25;
 
 import java.util.Stack;
 import java.util.StringTokenizer;

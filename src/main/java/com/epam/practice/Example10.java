@@ -1,4 +1,4 @@
-package com.epam.practice;
+package main.java.com.epam.practice;
 
 public class Example10 {
 

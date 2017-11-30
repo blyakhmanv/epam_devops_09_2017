@@ -1,4 +1,4 @@
-package com.epam.se1;
+package main.java.com.epam.se1;
 
 public class Lesson12 {
 
@@ -35,7 +35,7 @@ public class Lesson12 {
 
     // 10 -> "0 1 2 3 4 5 6 7 8 9 10"
     // 5 -> "0 1 2 3 4 5"
-    static String createStringFromZeroTo(int value) {
+    public static String createStringFromZeroTo (int value) {
         return value == 0 ? "0"
                           : createStringFromZeroTo(value - 1) + " " + value;
     }

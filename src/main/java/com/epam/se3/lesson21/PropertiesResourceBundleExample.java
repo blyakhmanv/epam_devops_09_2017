@@ -1,4 +1,4 @@
-package com.epam.se3.lesson21;
+package main.java.com.epam.se3.lesson21;
 
 import java.io.InputStream;
 import java.util.Locale;

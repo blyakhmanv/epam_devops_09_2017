@@ -1,16 +1,16 @@
-package main.java.com.epam.se5.lesson26.practice;
+package main.java.com.epam.practice.WServer;
 
-import java.io.OutputStream;
+import java.io.BufferedWriter;
 
 public interface HttpResponse {
 
-    void setProtocol(String protocol);
-    void setResponseCode(ResponseCode code);
-    void setHeader(String name, String value);
-    void setServerHeader(String value);
-    void setContentType(String value);
-    void setContentLength(String value);
-    OutputStream getOutputStream();
+    void setProtocol (String protocol);
+    void setResponseCode (ResponseCode code);
+    void setHeader (String name, String value);
+    void setServerHeader (String value);
+    void setContentType (String value);
+    void setContentLength (String value);
+    BufferedWriter getOutputStream ();
 
     enum ResponseCode {
         OK(200, "OK"),

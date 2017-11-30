@@ -1,4 +1,4 @@
-package com.epam.se4.lesson23;
+package main.java.com.epam.se4.lesson23;
 
 import java.io.CharArrayReader;
 import java.io.IOException;

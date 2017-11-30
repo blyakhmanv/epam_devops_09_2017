@@ -1,4 +1,4 @@
-package com.epam.se3.lesson22;
+package main.java.com.epam.se3.lesson22;
 
 import java.io.FileWriter;
 import java.io.IOException;

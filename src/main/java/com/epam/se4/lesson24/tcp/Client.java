@@ -1,4 +1,4 @@
-package com.epam.se4.lesson24.tcp;
+package main.java.com.epam.se4.lesson24.tcp;
 
 import java.io.*;
 import java.net.Socket;

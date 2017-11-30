@@ -1,4 +1,4 @@
-package com.epam.se5.lesson26.practice;
+package main.java.com.epam.se5.lesson26.practice;
 
 public interface WebServer {
 

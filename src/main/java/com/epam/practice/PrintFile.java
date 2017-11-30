@@ -12,8 +12,8 @@ public class PrintFile {
         ClassLoader classloader = ClassLoader.getSystemClassLoader ();
         try {
             BufferedInputStream bis = new BufferedInputStream ( classloader.getResourceAsStream(path));
-           while (bis.available ()>0) {
-               result = result.append (  (char)bis.read ( )) ;
+            while (bis.available ()> 0) {
+               result = result.append ( ( (char)bis.read ( ))) ;
            }
 
         } catch (IOException e) {
