@@ -24,9 +24,10 @@ public class HttpProcessorModule implements HttpProcessor {
                 System.out.println ("bad" );
                 out.write("HTTP/1.1 400 Bad Request\r\n");
                 out.flush ();
-            }
-
-        } catch (IOException e) {
+            }   catch (IOException e) {
+            e.printStackTrace ( );
+        }
+    } catch (IOException e) {
             e.printStackTrace ( );
         }
 

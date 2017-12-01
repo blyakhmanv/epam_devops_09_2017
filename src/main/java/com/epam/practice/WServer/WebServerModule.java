@@ -2,6 +2,7 @@ package main.java.com.epam.practice.WServer;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.net.URLDecoder;
 
 public class WebServerModule implements WebServer {
     @Override
@@ -11,7 +12,7 @@ public class WebServerModule implements WebServer {
       ClassLoader classloader = ClassLoader.getSystemClassLoader ();
         System.out.println (request.getURI () );
        try {
-           BufferedInputStream bis = new BufferedInputStream ( classloader.getResourceAsStream(request.getURI ().substring ( 1 )));
+           BufferedInputStream bis = new BufferedInputStream ( classloader.getResourceAsStream( URLDecoder.decode ( request.getURI ().substring ( 1 ),"UTF-8")));
            System.out.println (bis.available ());
            response.getOutputStream ().write ( "HTTP/1.1 200 OK\r\n" );
            response.getOutputStream ().write ( "\r\n" );
